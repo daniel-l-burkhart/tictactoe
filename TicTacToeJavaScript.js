@@ -5,49 +5,80 @@ var player1 = [];
 
 var player2 = [];
 
+var usedSpots = [];
 
 
 var winningScores = [7, 56, 448, 273, 84, 73, 146, 292];
 
-function addClickedSquare(power) {
-    var value = Math.pow(2, power);
+function canvasClicked(power) {
+   
+    var numericVal= Math.pow(2, power);
+
     var canvas = document.getElementsByTagName("canvas");
+    var ctx = canvas[power].getContext("2d");
+    ctx.font = "20px Georgia";
 
-    if (player1.length() <= player2.length()) {
-        player1.push(numericVal);
-        checkForWin(player1,"X");
-        canvas.elements[power].innerText = "X";
 
+    if (spotIsTaken(power)) {
+        alert("Spot Taken");
+    
     } else {
-        player2.push(elementName);
-        checkForWin(player2, "O");
-        canvas.elements[power].innerText = "O";
-    }
 
-    checkForWin();
+        if (player1.length === player2.length) {
+            player1[player1.length] = numericVal;
+            ctx.fillText("X", 20, 30, 50);
+            checkForWin(player1, "X");
+
+        } else {
+            player2[player2.length] = numericVal;
+            ctx.fillText("O", 20, 30, 50);
+            checkForWin(player2, "O");
+        }
+        usedSpots[usedSpots.length] = power;
+      
+       
+    }
+    
+}
+
+function spotIsTaken(index) {
+    var isTaken = false;
+    var i = 0;
+    usedSpots.forEach(function(spot) {
+        if (parseInt(spot) === parseInt(index)) {
+            isTaken = true;
+        }
+        i++;
+    });
+
+    return isTaken;
 }
 
 function checkForWin(player, playerName) {
-    var sum = 0;
-    forEach(winningScore in winningScores)
+    var i = 0;
+   while (i < winningScores.length)
     {
-      if (sum(player) === winningScores) {
+      if (parseInt(sum(player)) === parseInt(winningScores[i])) {
           alert("player " + playerName + " wins!");
-          document.refresh();
-      } 
+          location.reload();
+      }
+        i++;
     }
     
 }
 
 function sum(list) {
     var total = 0;
-    
-    forEach(intVal in list)
+    var i = 0;
+    while (i < list.length)
     {
-        sum += Int
+        total += list[i];
+        i++;
     }
 
+    return total;
 
 }
+
 
 
