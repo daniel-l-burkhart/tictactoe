@@ -20,3 +20,7 @@ canvas:hover{
     color: black ;
     background-color: #def;
 }
+
+NewGame{
+    position: relative;
+}
