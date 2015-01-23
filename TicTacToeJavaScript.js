@@ -9,17 +9,19 @@ var player2 = [];
 
 var winningScores = [7, 56, 448, 273, 84, 73, 146, 292];
 
-function addClickedSquare(elementName) {
+function addClickedSquare(power) {
+    var value = Math.pow(2, power);
+    var canvas = document.getElementsByTagName("canvas");
 
     if (player1.length() <= player2.length()) {
-        player1.push(elementName);
+        player1.push(numericVal);
         checkForWin(player1,"X");
-        document.getElementById(elementName).innerText = "X";
+        canvas.elements[power].innerText = "X";
 
     } else {
         player2.push(elementName);
         checkForWin(player2, "O");
-        document.getElementById(elementName).innerText = "O";
+        canvas.elements[power].innerText = "O";
     }
 
     checkForWin();
