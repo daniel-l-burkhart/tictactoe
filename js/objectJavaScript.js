@@ -42,6 +42,10 @@ function Board() {
 		}
 	};
 	
+	this.resetSpaces = function(){
+		
+	};
+	
 	this.isBoardFilledIn = function() {
 		for (var i = 0; i < this.spaces.length; i++) {
 			if (this.spaces[i].isEmpty()) {
@@ -57,8 +61,8 @@ function Board() {
 function Game() {
 	this.xPlayer = new Player("X");
 	this.oPlayer = new Player("O");
-		this.xPlayer.score = 0;
-		this.oPlayer.score = 0;
+	this.xPlayer.score = 0;
+	this.oPlayer.score = 0;
 	this.board = new Board();
 	this.board.setSpaces();
 
