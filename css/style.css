@@ -2,10 +2,12 @@ body{
 	text-align:center;
 }
 
-.box{
+#box{
 	text-align:left;
-	width:auto;
-	height:auto;
+	width:180px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 h1{
