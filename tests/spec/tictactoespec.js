@@ -31,18 +31,37 @@ describe("The values of cells are correct", function() {
 });
 
 describe("Player Changes after each turn.", function() {
-	var currentGame = new Game();
-	currentGame.board.setSpaces();
+
 	
 	it("Player X should be the first current Player.", function() {
+		var currentGame = new Game();
+		currentGame.board.setSpaces();
 		expect(currentGame.currentPlayer.Name).toBe("X"); 
 	});
 	
 	it("Player O should be the Second current Player.", function() {
+		var currentGame = new Game();
+		currentGame.board.setSpaces();
 		currentGame.makeMove(1);
 		expect(currentGame.currentPlayer.Name).toBe("O"); 
 	});
-
+	
+	it("Player X should be the Third current Player.", function() {
+		var currentGame = new Game();
+		currentGame.board.setSpaces();
+		currentGame.makeMove(1);
+		currentGame.makeMove(2);
+		expect(currentGame.currentPlayer.Name).toBe("X"); 
+	});
+	
+		it("Player O should be the Fourth current Player.", function() {
+		var currentGame = new Game();
+		currentGame.board.setSpaces();
+		currentGame.makeMove(1);
+		currentGame.makeMove(2);
+		currentGame.makeMove(3);
+		expect(currentGame.currentPlayer.Name).toBe("O"); 
+	});
 });
 
 
@@ -84,4 +103,45 @@ describe("Player Score Changes after each turn.", function() {
 	});
 });
 	
+describe("Determines whether a move is a win correctly.", function() {
+	
+	it("Player X should win basing off of spaces 0, 1 and 2", function() {
+		var currentGame2 = new Game();
+		currentGame2.board.setSpaces();
+		currentGame2.makeMove(0);
+		currentGame2.makeMove(3);
+		currentGame2.makeMove(1);
+		currentGame2.makeMove(5);
+		currentGame2.makeMove(2);
+		expect(checkForWinner(currentGame2.xPlayer.score)).toBe(true); 
+	});
+	
+	it("Player O should win based off of spcaes 0, 4 and 8", function(){
+		var currentGame2 = new Game();
+		currentGame2.board.setSpaces();
+		currentGame2.makeMove(1);
+		currentGame2.makeMove(0);
+		currentGame2.makeMove(3);
+		currentGame2.makeMove(4);
+		currentGame2.makeMove(5);
+		currentGame2.makeMove(8);
+		expect(checkForWinner(currentGame2.oPlayer.score)).toBe(true); 
+	});
+});
 
+describe("Determines if a draw game functions correctly.", function(){
+	it("Should return a game in a draw", function(){
+		var currentGame = new Game();
+		currentGame.board.setSpaces();
+		currentGame.makeMove(6);
+		currentGame.makeMove(8);
+		currentGame.makeMove(0);
+		currentGame.makeMove(2);
+		currentGame.makeMove(4);
+		currentGame.makeMove(3);
+		currentGame.makeMove(5);
+		currentGame.makeMove(1);
+		currentGame.makeMove(7);
+		expect(currentGame.board.isBoardFilledIn()).toBe(true);
+	});
+});

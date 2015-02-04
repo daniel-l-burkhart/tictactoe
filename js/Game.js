@@ -15,7 +15,6 @@ function Game() {
 		this.xPlayer.score = 0;
 		this.oPlayer.score = 0;
 		this.currentPlayer = this.xPlayer;
-		location.reload();
 	};
 	
     this.switchCurrentPlayers = function() {
@@ -30,9 +29,8 @@ function Game() {
 		this.board.spaces[index].playerMarked = currPlayer.Name;
 			if (checkForWinner(currPlayer.score)) {
 				alert("Player " + currPlayer.Name + " wins");
-				this.newGame();
 				}
-			currPlayer.turn +=1;
+			
 	}		
 	this.makeMove = function(index) {
 		if(this.board.spaces[index].Marked === false){
@@ -41,12 +39,10 @@ function Game() {
 			this.board.spaces[index].Marked = true;
 			if (this.board.isBoardFilledIn()) {
 				alert("The Game is a Draw.");
-				this.newGame();
 			}	
 			
 		} else{
 			alert("Space is taken.");
 		}
 	};
-
 }

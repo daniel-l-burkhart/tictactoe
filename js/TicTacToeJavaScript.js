@@ -10,8 +10,11 @@ $(document).ready(function(){
 		var ctx =canvas[canvasIndex].getContext("2d");
 		ctx.font="20px Georgia";
 		ctx.fillText(game.board.spaces[canvasIndex].playerMarked, 20, 30, 50);
-		
-		
+			if(checkForWinner(game.xPlayer.score) || checkForWinner(game.oPlayer.Score) 
+				|| game.board.isBoardFilledIn()) {
+				location.reload();
+				
+			}
 	});
 	
 	$("button").click(function() {

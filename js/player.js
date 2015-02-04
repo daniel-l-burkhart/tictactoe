@@ -2,7 +2,7 @@ function Player(playerName) {
 	
 	this.Name = playerName;
 	this.score = 0;	
-	this.turn = 0;
+
 }
 
 function checkForWinner(currentScore) {
